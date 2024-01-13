@@ -1,25 +1,26 @@
-package com.amcr.appointments.specializare;
+package com.amcr.appointments.specialization;
 
-import com.amcr.appointments.spital.Spital;
+import com.amcr.appointments.hospital.Hospital;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Table(name = "SPECIALIZARE")
 @Getter
 @Setter
 @NoArgsConstructor
-public class Specializare {
+public class Specialization {
     @Id
-    @GeneratedValue
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
 
     private String nume;
 
     @ManyToMany
-    private List<Spital> spitale;
+    private List<Hospital> spitale;
 }

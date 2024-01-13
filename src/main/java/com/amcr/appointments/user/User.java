@@ -9,6 +9,7 @@ import lombok.Setter;
 import org.springframework.beans.BeanUtils;
 
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Table(name = "USER")
@@ -17,8 +18,8 @@ import java.util.List;
 @NoArgsConstructor
 public class User {
     @Id
-    @GeneratedValue
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
 
     private String email;
 

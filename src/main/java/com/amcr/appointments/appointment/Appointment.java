@@ -1,15 +1,15 @@
 package com.amcr.appointments.appointment;
 
-import com.amcr.appointments.specializare.Specializare;
-import com.amcr.appointments.spital.Spital;
+import com.amcr.appointments.specialization.Specialization;
+import com.amcr.appointments.hospital.Hospital;
 import com.amcr.appointments.user.User;
 import jakarta.persistence.*;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Entity
 @Table(name = "APPOINTMENT")
@@ -18,18 +18,18 @@ import java.time.LocalDateTime;
 @Accessors(chain = true)
 public class Appointment {
     @Id
-    @GeneratedValue
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
 
     private Long numarProgramare;
 
     private LocalDateTime dataProgramarii;
 
     @ManyToOne
-    private Spital spital;
+    private Hospital hospital;
 
     @ManyToOne
-    private Specializare specializare;
+    private Specialization specialization;
 
     @ManyToOne
     private User pacient;
