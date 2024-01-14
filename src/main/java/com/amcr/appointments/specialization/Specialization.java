@@ -23,6 +23,12 @@ public class Specialization {
     private String nume;
 
     @ManyToMany
+    @JoinTable(
+            name = "specialization_hospitals",
+            joinColumns = @JoinColumn(name = "specialization_id"),
+            inverseJoinColumns = @JoinColumn(name = "hospital_id"),
+            uniqueConstraints = @UniqueConstraint(columnNames = { "specialization_id", "hospital_id" })
+    )
     private List<Hospital> spitale;
 
     @OneToMany(mappedBy = "specialization")

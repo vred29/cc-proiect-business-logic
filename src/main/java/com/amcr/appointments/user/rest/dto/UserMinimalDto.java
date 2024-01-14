@@ -5,10 +5,12 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.BeanUtils;
 
+import java.util.UUID;
+
 @Getter
 @Setter
 public class UserMinimalDto {
-    String id;
+    UUID id;
     String nume;
     String prenume;
 

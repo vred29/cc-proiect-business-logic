@@ -5,10 +5,12 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.BeanUtils;
 
+import java.util.UUID;
+
 @Getter
 @Setter
 public class SpecializationMinimalDto {
-    private String id;
+    private UUID id;
     private String nume;
 
     public SpecializationMinimalDto(Specialization specialization){

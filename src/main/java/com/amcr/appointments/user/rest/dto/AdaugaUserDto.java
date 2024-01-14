@@ -7,14 +7,10 @@ import lombok.Setter;
 @Getter
 @Setter
 public class AdaugaUserDto {
-    String email;
-
     String nume;
     String prenume;
-
     String cnp;
-
     String adresa;
-
+    String email;
     UserRole rol;
 }

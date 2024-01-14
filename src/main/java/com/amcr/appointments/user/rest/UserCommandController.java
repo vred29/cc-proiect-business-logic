@@ -13,11 +13,11 @@ import java.util.UUID;
 @RequestMapping("/user")
 @RequiredArgsConstructor
 public class UserCommandController {
-    private final UserRepository userRepository;
+    final UserRepository userRepository;
     @PostMapping
     public ResponseEntity<?> addUser(@RequestBody AdaugaUserDto dto){
-        userRepository.save(new User(dto));
-        return ResponseEntity.ok().build();
+        var user = userRepository.save(new User(dto));
+        return ResponseEntity.ok(user.getId());
 
     }
     @DeleteMapping("/{userId}")
