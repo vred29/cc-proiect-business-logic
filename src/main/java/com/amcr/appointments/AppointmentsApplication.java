@@ -1,13 +1,12 @@
-package com.amcr.appoiments;
+package com.amcr.appointments;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class AppoimentsApplication {
+public class AppointmentsApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(AppoimentsApplication.class, args);
+		SpringApplication.run(AppointmentsApplication.class, args);
 	}
-
 }
