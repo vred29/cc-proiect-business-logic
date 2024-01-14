@@ -5,10 +5,8 @@ import com.amcr.appointments.specialization.rest.dto.SpecializationMinimalDto;
 import com.amcr.appointments.hospital.Hospital;
 import com.amcr.appointments.hospital.HospitalRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.apache.coyote.BadRequestException;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
@@ -21,8 +19,9 @@ public class SpecializationReadController {
     private final HospitalRepository hospitalRepository;
 
     @GetMapping
-    public List<SpecializationMinimalDto> getSpecializariBySpital(@RequestBody UUID spitalId){
-        Hospital hospital = hospitalRepository.findById(spitalId).orElse(null);
+    public List<SpecializationMinimalDto> getSpecializariBySpital(@RequestParam UUID spitalId) throws BadRequestException {
+        Hospital hospital = hospitalRepository.findById(spitalId)
+                .orElseThrow(() -> new BadRequestException("Spitalul nu exista."));
         return specializationRepository.findAllBySpitaleIn(List.of(hospital))
                 .stream().map(SpecializationMinimalDto::new).toList();
     }

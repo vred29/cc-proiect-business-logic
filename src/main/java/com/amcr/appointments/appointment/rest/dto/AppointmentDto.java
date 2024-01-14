@@ -6,11 +6,12 @@ import lombok.Setter;
 import org.springframework.beans.BeanUtils;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Getter
 @Setter
 public class AppointmentDto {
-    private String id;
+    private UUID id;
     private Long numarProgramare;
     private LocalDateTime dataProgramarii;
     public AppointmentDto(Appointment appointment){

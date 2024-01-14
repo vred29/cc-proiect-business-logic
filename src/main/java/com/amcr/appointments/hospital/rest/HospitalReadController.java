@@ -13,7 +13,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 public class HospitalReadController {
-    private HospitalRepository hospitalRepository;
+    final HospitalRepository hospitalRepository;
 
     @GetMapping
     public List<HospitalMinimalDto> getAllSpitale(){
