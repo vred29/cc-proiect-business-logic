@@ -1,0 +1,36 @@
+version: '3'
+volumes:
+  postgres_data:
+services:
+  mail:
+    image: mailhog/mailhog
+    ports:
+      - "1026:1025"
+      - "8026:8025"
+  kc-db:
+    image: postgres
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
+    ports:
+      - "6442:5432"
+    environment:
+      POSTGRES_DB: keycloak-cc
+      POSTGRES_USER: keycloak
+      POSTGRES_PASSWORD: password
+  keycloak:
+    image: jboss/keycloak:latest
+    ports:
+      - "8090:8080"
+    environment:
+      - KC_HOSTNAME=localhost
+      - KC_DB_USERNAME=keycloak
+      - KC_DB_PASSWORD=password
+      - KC_DB_SCHEMA=public
+      - KC_DB_URL=jdbc:postgresql://keycloak-cc:5432/keycloak
+      - KC_DB=postgres
+      - KEYCLOAK_USER=admin
+      - KEYCLOAK_PASSWORD=password
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=password
+    depends_on:
+      - kc-db
