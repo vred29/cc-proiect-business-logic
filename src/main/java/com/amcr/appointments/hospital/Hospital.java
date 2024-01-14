@@ -1,5 +1,6 @@
 package com.amcr.appointments.hospital;
 
+import com.amcr.appointments.appointment.Appointment;
 import com.amcr.appointments.specialization.Specialization;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -10,7 +11,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Entity
-@Table(name = "SPITAL")
+@Table(name = "HOSPITAL")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -24,4 +25,7 @@ public class Hospital {
 
     @ManyToMany(mappedBy = "spitale")
     private List<Specialization> specializari;
+
+    @OneToMany(mappedBy = "hospital")
+    private List<Appointment> appointments;
 }

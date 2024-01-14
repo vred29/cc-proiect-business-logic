@@ -32,8 +32,10 @@ public class Appointment {
     private Specialization specialization;
 
     @ManyToOne
+    @JoinColumn(name = "pacient_id")  // Specify the foreign key column for pacient
     private User pacient;
 
     @ManyToOne
+    @JoinColumn(name = "medic_id")  // Specify the foreign key column for medic
     private User medic;
 }

@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/user")
@@ -17,7 +18,7 @@ public class UserReadController {
 
 
     @GetMapping("/{userId}")
-    public User getUser(@PathVariable Long userId){
+    public User getUser(@PathVariable UUID userId){
         return userRepository.findById(userId).orElse(null);
     }
 

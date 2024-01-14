@@ -11,8 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.UUID;
 
-@RequestMapping("/specializatoin")
+@RequestMapping("/specialization")
 @RestController
 @RequiredArgsConstructor
 public class SpecializationReadController {
@@ -20,9 +21,9 @@ public class SpecializationReadController {
     private final HospitalRepository hospitalRepository;
 
     @GetMapping
-    public List<SpecializationMinimalDto> getSpecializariBySpital(@RequestBody Long spitalId){
+    public List<SpecializationMinimalDto> getSpecializariBySpital(@RequestBody UUID spitalId){
         Hospital hospital = hospitalRepository.findById(spitalId).orElse(null);
-        return specializationRepository.findAllBySpitale(List.of(hospital))
+        return specializationRepository.findAllBySpitaleIn(List.of(hospital))
                 .stream().map(SpecializationMinimalDto::new).toList();
     }
 }

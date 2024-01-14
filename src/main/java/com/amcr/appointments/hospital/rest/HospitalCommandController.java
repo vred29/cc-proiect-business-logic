@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RequestMapping("/hospitals")
+@RequestMapping("/hospital")
 @RestController
 @RequiredArgsConstructor
 public class HospitalCommandController {

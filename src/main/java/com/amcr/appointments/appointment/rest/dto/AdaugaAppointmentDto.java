@@ -4,14 +4,15 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Setter
 @Getter
 public class AdaugaAppointmentDto {
     private LocalDateTime dataProgramarii;
-    private Long spitalId;
-    private Long specializareId;
-    private Long medicId;
-    private Long pacientId;
+    private UUID spitalId;
+    private UUID specializareId;
+    private UUID medicId;
+    private UUID pacientId;
 }
 

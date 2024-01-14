@@ -10,22 +10,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.UUID;
 
-@RequestMapping("/appointments")
+@RequestMapping("/appointment")
 @RestController
 @RequiredArgsConstructor
 public class AppointmentReadController {
     final AppointmentRepository appointmentRepository;
     final UserRepository userRepository;
-    @GetMapping
-    public List<AppointmentDto> getProgramariByPacient(@RequestBody Long pacientId){
+    @GetMapping("/pacient")
+    public List<AppointmentDto> getProgramariByPacient(@RequestBody UUID pacientId){
         var pacient = userRepository.findById(pacientId).orElse(null);
         return appointmentRepository.findAllByPacient(pacient)
                 .stream().map(AppointmentDto::new).toList();
     }
 
-    @GetMapping
-    public List<AppointmentDto> getProgramariByMedic(@RequestBody Long medicId){
+    @GetMapping("/medic")
+    public List<AppointmentDto> getProgramariByMedic(@RequestBody UUID medicId){
         var pacient = userRepository.findById(medicId).orElse(null);
         return appointmentRepository.findAllByPacient(pacient)
                 .stream().map(AppointmentDto::new).toList();

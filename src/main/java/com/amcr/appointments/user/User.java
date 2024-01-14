@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Entity
-@Table(name = "USER")
+@Table(name = "APPOINTMENT_USER")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -32,8 +32,11 @@ public class User {
 
     private UserRole rol;
 
-    @OneToMany(mappedBy = "user")
-    private List<Appointment> appointments;
+    @OneToMany(mappedBy = "pacient")
+    private List<Appointment> pacientAppointments;
+
+    @OneToMany(mappedBy = "medic")
+    private List<Appointment> medicAppointments;
 
     public User(AdaugaUserDto dto){
         BeanUtils.copyProperties(dto, this);
