@@ -1,0 +1,14 @@
+version: '3'
+volumes:
+  postgres_data:
+services:
+  db-app:
+    image: postgres:latest
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
+    ports:
+      - "32428:5433"
+    environment:
+      POSTGRES_DB: cc
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
